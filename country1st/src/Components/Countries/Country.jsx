@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './contry.css';
 
-export default function Country({country, handleVisitedCou}) {
+export default function Country({country, handleVisitedCou, handleVisitedFlag}) {
   // console.log(country)
   const {name, flags,languages,area,capital} = country;
   const [visit, setVisit] = useState(false)
@@ -10,7 +10,7 @@ export default function Country({country, handleVisitedCou}) {
     setVisit(!visit)
   }
 
-  
+
   return (
     <div className='country'>
       <h2 className='text-center text-3xl'>Name: {name?.common}</h2>
@@ -20,11 +20,11 @@ export default function Country({country, handleVisitedCou}) {
       <h2 className='text-center text-3xl'>Land: {area} Sq</h2>
       <h2 className='text-center text-3xl'>Capital: {capital}</h2>
 
-      <button className='btn btn-secondary' onClick={()=>handleVisitedCou(name?.common)}>Mark Visited</button> <br/>
+      <button className='btn btn-secondary' onClick={()=>handleVisitedCou(country)}>Mark Visited</button> <br/>
       <button className='btn btn-primary' onClick={() => handleVisit(country.name.common)}>{visit ? 'visited' : 'Going' }</button>
       {visit ? 'I was visit this country' : 'i want to visit'}
       <br />
-      <input className='input mt-10' type="text" placeholder='comment' />
+      <button onClick={()=>handleVisitedFlag(country.flags.png)}>add Flag</button>
     </div>
   )
 }
